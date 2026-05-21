@@ -28,18 +28,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-            padding: 20px;
-            box-sizing: border-box;
+            height: 100vh;
+            overflow: hidden;
             letter-spacing: -0.02em;
         }
 
         .main-container {
             display: flex;
-            width: 100%;
-            max-width: 1050px;
-            height: 600px;
+            width: 90%;
+            max-width: 1150px;
+            height: 650px;
             background: rgba(15, 11, 28, 0.6);
             backdrop-filter: blur(40px);
             -webkit-backdrop-filter: blur(40px);
@@ -65,50 +63,49 @@
             100% { background-position: 200% 50%; }
         }
 
+        /* 왼쪽 메인 영역 (회전 CD 전용 플레이어) */
         .player-left {
-            flex: 1.1;
+            flex: 1.2;
             padding: 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             border-right: 1px solid var(--glass-border);
         }
 
-        /* 진짜 CD 스타일로 업그레이드된 디자인 */
+        /* 380px로 시원하게 확대된 마법소녀 CD 레코드판 스타일 */
         .album-cover {
             width: 100%;
             aspect-ratio: 1;
-            max-width: 265px; /* 크기를 아주 조금만 상향 조정 */
-            margin: 0 auto 30px;
+            max-width: 380px;
             background: #0d0a1a;
             border-radius: 50%;
             overflow: hidden;
             position: relative;
-            
-            /* CD 특유의 동심원 음반 라인 및 리얼 섀도우 효과 */
             box-shadow: 
-                0 15px 45px rgba(0, 0, 0, 0.7), 
+                0 25px 60px rgba(0, 0, 0, 0.8), 
                 inset 0 0 0 1px rgba(255, 255, 255, 0.05),
-                inset 0 0 20px rgba(0, 0, 0, 0.8);
+                inset 0 0 30px rgba(0, 0, 0, 0.9);
             background-image: repeating-radial-gradient(circle, rgba(255,255,255,0.008) 0px, rgba(255,255,255,0.008) 2px, transparent 3px, transparent 5px);
-            
+            margin-bottom: 35px;
             animation: float 6s ease-in-out infinite;
         }
 
-        /* CD 가운데 정교한 투명 홀 구현 */
+        /* CD 가운데 홀 정밀 구현 */
         .album-cover::after {
             content: '';
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 38px;
-            height: 38px;
-            background: #110c22; /* 배경색과 맞춘 가상 투명 홀 */
+            width: 45px;
+            height: 45px;
+            background: #120e24; /* 테마 배경색 홀 매칭 */
             border: 5px solid rgba(255, 255, 255, 0.04);
             border-radius: 50%;
             box-shadow: 
                 inset 0 0 8px rgba(0, 0, 0, 0.9),
-                0 0 0 10px rgba(0, 0, 0, 0.4);
+                0 0 0 15px rgba(0, 0, 0, 0.5);
             z-index: 5;
         }
 
@@ -118,16 +115,10 @@
         }
 
         .album-cover img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: block;
+            width: 100%; height: 100%; object-fit: cover; display: block;
             border-radius: 50%;
-            
-            /* CD의 미세한 플라스틱 막 마스킹 처리 */
-            mask-image: radial-gradient(circle, transparent 24px, #000 25px);
-            -webkit-mask-image: radial-gradient(circle, transparent 24px, #000 25px);
-            
+            mask-image: radial-gradient(circle, transparent 28px, #000 29px);
+            -webkit-mask-image: radial-gradient(circle, transparent 28px, #000 29px);
             transition: transform 0.5s ease;
             animation: rotateCD 20s linear infinite;
             animation-play-state: paused;
@@ -142,26 +133,21 @@
             100% { transform: rotate(360deg); }
         }
 
-        .now-playing-info { text-align: center; }
-        .now-playing-info h2 { margin: 0; font-size: 1.45rem; font-weight: 700; color: var(--text-main); }
-        .now-playing-info p { color: var(--magic-pink); margin: 6px 0 12px; font-size: 0.75rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; opacity: 0.9; }
-        .track-desc { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 30px; line-height: 1.5; min-height: 3em; font-weight: 400; }
-
         .audio-controls {
             width: 100%;
-            max-width: 320px;
-            margin: 0 auto;
+            max-width: 380px;
         }
 
-        .progress-area { height: 4px; background: rgba(255, 255, 255, 0.06); border-radius: 2px; margin-bottom: 30px; cursor: pointer; position: relative; }
+        .progress-area { height: 4px; background: rgba(255, 255, 255, 0.06); border-radius: 2px; margin-bottom: 25px; cursor: pointer; position: relative; }
         .progress-bar { height: 100%; background: linear-gradient(90deg, var(--magic-purple), var(--magic-pink)); width: 0%; border-radius: 2px; box-shadow: 0 0 12px rgba(167, 139, 250, 0.5); }
         
         .buttons { display: flex; align-items: center; gap: 35px; justify-content: center; }
-        .btn { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 1.1rem; transition: all 0.2s ease; padding: 5px; }
-        .btn:hover { color: var(--text-main); transform: scale(1.05); }
-        .play-btn { font-size: 2.2rem; color: var(--text-main); }
+        .btn { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 1.2rem; transition: all 0.2s ease; padding: 5px; }
+        .btn:hover { color: var(--text-main); transform: scale(1.1); }
+        .play-btn { font-size: 2.5rem; color: var(--text-main); }
         .play-btn:hover { color: var(--magic-pink); transform: scale(1.1); }
 
+        /* 오른쪽 사이드 영역 (상단 설명 + 하단 플레이리스트 정렬 구조) */
         .playlist-right {
             flex: 1;
             padding: 40px;
@@ -171,10 +157,21 @@
             overflow: hidden;
         }
 
+        /* 상단으로 올라온 타이틀 및 설명 배치 */
+        .now-playing-info { 
+            text-align: left;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .now-playing-info h2 { margin: 0; font-size: 1.8rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.5px; line-height: 1.2; }
+        .now-playing-info p { color: var(--magic-pink); margin: 8px 0 12px; font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; opacity: 0.9; }
+        .track-desc { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; margin: 0; min-height: 3.2em; font-weight: 400; word-break: keep-all; }
+
         .playlist-header {
-            font-size: 0.8rem; font-weight: 700; margin-bottom: 25px;
+            font-size: 0.8rem; font-weight: 700; margin-bottom: 15px;
             color: var(--text-main); letter-spacing: 4px; text-align: left;
-            opacity: 0.5; text-transform: uppercase;
+            opacity: 0.4; text-transform: uppercase;
         }
 
         .track-list {
@@ -192,9 +189,7 @@
             border: 1px solid transparent;
         }
 
-        .track-item:hover {
-            background: rgba(255, 255, 255, 0.02);
-        }
+        .track-item:hover { background: rgba(255, 255, 255, 0.02); }
 
         .track-item.active { 
             background: var(--active-gradient); 
@@ -202,14 +197,8 @@
             border-radius: 0 12px 12px 0;
         }
         
-        .track-item.active .track-title {
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        .track-item.active .track-number {
-            background: var(--magic-pink);
-        }
+        .track-item.active .track-title { color: var(--text-main); font-weight: 600; }
+        .track-item.active .track-number { background: var(--magic-pink); }
 
         .track-number { 
             width: 6px; height: 6px; 
@@ -220,42 +209,25 @@
             transition: all 0.3s ease;
         }
         
-        .track-title { flex: 1; font-size: 0.9rem; font-weight: 400; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 0.2s; }
+        .track-title { flex: 1; font-size: 0.95rem; font-weight: 400; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 0.2s; }
         .track-duration { font-size: 0.8rem; color: var(--text-dim); opacity: 0.6; font-variant-numeric: tabular-nums; }
 
         @media (max-width: 768px) {
-            body { align-items: flex-start; padding: 15px; }
-            .main-container {
-                flex-direction: column;
-                height: auto;
-                border-radius: 20px;
-            }
-            .player-left {
-                border-right: none;
-                border-bottom: 1px solid var(--glass-border);
-                padding: 40px 24px;
-            }
-            .album-cover { max-width: 200px; margin-bottom: 25px; }
-            .playlist-right {
-                height: 380px;
-                padding: 30px 24px;
-            }
-            .now-playing-info h2 { font-size: 1.3rem; }
-            .buttons { gap: 30px; }
+            body { height: auto; min-height: 100vh; overflow-y: auto; align-items: flex-start; padding: 20px 0; }
+            .main-container { flex-direction: column; height: auto; width: 90%; }
+            .player-left { flex: unset; padding: 40px 24px; border-right: none; border-bottom: 1px solid var(--glass-border); }
+            .album-cover { max-width: 280px; margin-bottom: 25px; }
+            .playlist-right { flex: unset; padding: 30px 24px; height: auto; }
         }
     </style>
 </head>
 <body>
 
 <div class="main-container">
+    <!-- 왼쪽 레이아웃: 가득 차오르는 380px 크기 CD 플레이어 바 -->
     <div class="player-left">
         <div class="album-cover" id="albumCover">
             <img src="" id="mainArt">
-        </div>
-        <div class="now-playing-info">
-            <h2 id="displayTitle">곡을 선택해주세요</h2>
-            <p id="displayAlbum">LUNA Playlist</p>
-            <div class="track-desc" id="displayDesc">꿈과 희망의 멜로디... ✨</div>
         </div>
         <div class="audio-controls">
             <div class="progress-area" id="progressContainer">
@@ -269,7 +241,14 @@
         </div>
     </div>
 
+    <!-- 오른쪽 레이아웃: 상단 상세 설명창 + 하단 리스트업 구조 -->
     <div class="playlist-right">
+        <div class="now-playing-info">
+            <h2 id="displayTitle">곡을 선택해주세요</h2>
+            <p id="displayAlbum">LUNA Playlist</p>
+            <div class="track-desc" id="displayDesc">꿈과 희망의 멜로디... ✨</div>
+        </div>
+
         <div class="playlist-header">LUNA PLAYLIST</div>
         <ul class="track-list" id="trackList"></ul>
     </div>
@@ -298,7 +277,7 @@
             link: "https://raw.githubusercontent.com/deokc/RUNA_pl/main/Don%E2%80%99t%20Take%20You%20Away_03.mp3", 
             duration: "03:56", 
             desc: "마법소녀도 사람이야.. 사람..",
-            art: "https://raw.githubusercontent.com/deokc/LUNA_pl/refs/heads/main/%EB%8F%88%EC%BB%A4%EB%B2%8401.png"
+            art: "https://raw.githubusercontent.com/deokc/LUNA_pl/refs/heads/main/%EB%82%98%EC%9D%B4%ED%8A%B8%EC%BB%A4%EB%B2%8401.png"
         },
         { 
             title: "별빛 같은 우리", 
